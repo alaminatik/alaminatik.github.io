@@ -1,863 +1,1337 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
-<!--<![endif]-->
-
 <head>
-
-    <!-- Basic Page Needs
-  ================================================== -->
-    <meta charset="utf-8">
-    <title>Alamin Mia Portfolio Website</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Mobile Specific Metas
-  ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- CSS
-  ================================================== -->
-    <link rel="stylesheet" href="stylesheets/base.css">
-    <link rel="stylesheet" href="stylesheets/skeleton.css">
-    <link rel="stylesheet" href="stylesheets/layout.css">
-    <link rel="stylesheet" href="stylesheets/style.css">
-
-
-    <!-- Favicons
-  ================================================== -->
-
-    <link rel="shortcut icon" href="images/favicon.ico">
-
-
-    <!-- Google Analytics Tracking Code
-  ================================================== -->
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127170832-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-127170832-1');
-	</script>
-	-->
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alamin Mia | Software Engineer</title>
+    <meta name="description" content="Portfolio of Alamin Mia - Software Engineer specializing in PHP, Laravel, React.js and full-stack web development.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        .image-css {
-            border: 1px solid #ddd;
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --secondary: #0f172a;
+            --text: #334155;
+            --text-light: #64748b;
+            --bg: #f1f5f9;          /* Light gray background */
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Layout */
+        .container {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--white);
+            border-right: 1px solid var(--border);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar-header {
+            padding: 32px 24px 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+            margin-bottom: 16px;
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-header p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .nav-menu {
+            padding: 20px 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+        }
+
+        .nav-menu li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 28px;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            background: rgba(37, 99, 235, 0.06);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+
+        .nav-menu li a i {
+            width: 20px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .social-links {
+            padding: 20px 28px 32px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px 48px 80px;
+            max-width: 1100px;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 56px;
+            scroll-margin-top: 30px;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            margin-bottom: 28px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Intro / Who am I */
+        .intro-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .intro-card p {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .intro-card a {
+            font-weight: 500;
+        }
+
+        .highlight {
+            color: #dc2626;
+            font-weight: 500;
+        }
+
+        /* Work Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 32px;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 28px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+
+        .job-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .job-title {
+            font-size: 1.15rem;
+            color: var(--secondary);
+        }
+
+        .job-company {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .job-date {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .job-location {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .responsibilities {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .responsibilities li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .responsibilities li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+
+        .skill-card h4 {
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--bg);
+            color: var(--text);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .project-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        .project-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .project-links {
+            margin: 10px 0 16px;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(37, 99, 235, 0.08);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-right: 10px;
+            margin-bottom: 6px;
+        }
+
+        .project-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .project-desc {
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .tools-used {
+            background: var(--bg);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+
+        .tools-used strong {
+            color: var(--secondary);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 12px;
+        }
+
+        .features-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 5px;
+            font-size: 0.92rem;
+        }
+
+        .features-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .role {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        /* Simple Lists */
+        .info-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+
+        .info-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .info-list li strong {
+            color: var(--secondary);
+        }
+
+        .edu-item {
+            margin-bottom: 20px;
+        }
+
+        .edu-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========== CONTACT - Light Version ========== */
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .contact-card h2 {
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            margin-bottom: 24px;
+            color: var(--text);
+            font-size: 1.05rem;
+        }
+
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 14px 28px;
             border-radius: 50px;
-            padding: 5px;
-            width: 150px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            transition: var(--transition);
+        }
+
+        .contact-email:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 200;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 80px 24px 60px;
+            }
+
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-content {
+                padding: 80px 16px 40px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .timeline-item,
+            .project-card,
+            .intro-card,
+            .info-card {
+                padding: 20px;
+            }
+
+            .job-header {
+                flex-direction: column;
+            }
         }
     </style>
-
 </head>
-
 <body>
 
-
-    <style>
-        a:link {
-            text-decoration: none;
-
-
-        }
-    </style>
-    <!-- Primary Page Layout
-  ================================================== -->
-
-    <!-- Delete everything in this .container and get started on your own site! -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+    </button>
 
     <div class="container">
-
         <!-- Sidebar -->
-        <div class="three columns sidebar">
-            <nav>
-                <h3 id="logo" style="text-align:center;">
-                    <img src="images/alamin_mia.jpg" class="image-css" />
-                    Alamin Mia
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="images/alamin_mia.png" alt="Alamin Mia" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Alamin+Mia&background=2563eb&color=fff&size=150'">
+                <h1>Alamin Mia</h1>
+                <p>Software Engineer</p>
+            </div>
 
-                </h3>
+            <nav class="nav-menu">
                 <ul>
-                    <li><a href="#">
-                            <span class=''>My Tech Blog!</span>
-                        </a></li>
-                    <li><a href="#whoami">Who am I?</a></li>
-                    <li><a href="#work">Work Experience</a></li>
-                    <li><a href="#skills">Skills & Abilities</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#extra_curriculum">Extra Curriculum Activities</a></li>
-                    <li><a href="#trained_programs">Trained Programs</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#interest_works">Interest To Works</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://www.linkedin.com/in/alaminmia/" target="_blank" target="_blank"><span
-                                class='blue'>LinkedIn Profile</span></a></li>
-                    <li><a href="https://github.com/alaminatik" target="_blank" target="_blank"><span
-                                class='blue'>Github Profile</span></a></li>
+                    <li><a href="#whoami"><i class="fas fa-user"></i> Who am I?</a></li>
+                    <li><a href="#work"><i class="fas fa-briefcase"></i> Work Experience</a></li>
+                    <li><a href="#skills"><i class="fas fa-code"></i> Skills & Abilities</a></li>
+                    <li><a href="#projects"><i class="fas fa-folder-open"></i> Projects</a></li>
+                    <li><a href="#extra_curriculum"><i class="fas fa-users"></i> Extra Curriculum</a></li>
+                    <li><a href="#trained_programs"><i class="fas fa-graduation-cap"></i> Trained Programs</a></li>
+                    <li><a href="#education"><i class="fas fa-university"></i> Education</a></li>
+                    <li><a href="#interest_works"><i class="fas fa-lightbulb"></i> Interest To Works</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
             </nav>
-        </div>
 
-        <!-- Content -->
-        <div class="twelve columns offset-by-four content">
-
-            <div class="doc-section" id="whoami">
-
-                <p><span class='red'>(*) Here is my tech blog, <strong><a href="#">check it out</a></strong> if you are
-                        interested.</span></p>
-                <h3>Who am I?</h3>
-                <p>Hi I'm Alamin Mia! Working in <a href="https://www.bdtax.com.bd/" target="_blank">BD Tax Technology Ltd</a> as a Software Engineer. Previously working in <a href="https://radissonbd.com/" target="_blank">Radisson Digital
-                        Technologies Limited</a> as a Web Developer. Before that I was working as a freelance Web Application
-                    Developer. I was also working in <a href="https://www.devszone.com/" target="_blank">DevsZone</a>
-                    as a Web Application Developer. Before that I Intern for <a target="_blank"
-                        href="http://etl.com.bd/">Ezze Technology Limited</a> as a Trainee Developer.
-                </p>
-                <p>I graduated from <a href="http://www.ewubd.edu/" target="_blank">East West University (EWU)</a>,
-                    Dhaka, Bangladesh.</p>
-
-
-                <!-- <blockquote>
-              <p>The first principle is that you must not fool yourself and you are the easiest person to fool..</p><cite>Richard P. Feynman</cite>
-	    </blockquote> -->
-
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/alaminmia/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/alaminatik" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
             </div>
-
-
-
-            <hr />
-            <div class="doc-section" id="work">
-                <h3>Work Experience</h3>
-                <ul class="square">
-                    <li>Software Engineer<sup></sup> @ <strong><a href="https://www.bdtax.com.bd/"
-                                target="_blank">BD Tax Technology Ltd</a></strong>
-                        <em>[Jun 2022 – Present]</em><br><br>
-                        <p style="margin: 0px;">
-                            DK Tower, 94 Bir uttom C.R. Datta Road, Banglamotor, Dhaka-1205, Bangladesh
-                            <ul>
-                                <li>
-                                    <strong><em>Responsibility :</em></strong>
-                                    <br> Developing software & application by analyzing and identification areas for
-                                    modifications
-                                    <br> Ensure existing software to correct errors and industry standard
-                                    <br> Determining user needs & information to evaluate and plan installation of a
-                                    new
-                                    system
-                                    <br> Testing & refining code and rewriting if it needed.
-
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>Web Developer<sup></sup> @ <strong><a href="https://radissonbd.com/"
-                                target="_blank">Radisson Digital
-                                Technologies Limited</a></strong>
-                        <em>[Feb 2021 – May 2022]</em><br><br>
-                        <p style="margin: 0px;">
-                            Shah Ali Tower(6th Floor),
-                            33 Kawran Bazar,
-                            Dhaka-1215, Bangladesh.
-                            <ul>
-                                <li>
-                                    <strong><em>Responsibility :</em></strong>
-                                    <br> Developing web system & application by analyzing and identification areas for
-                                    modifications
-                                    <br> Ensure existing software to correct errors and industry standard
-                                    <br> Determining user needs & information to evaluate and plan installation of a
-                                    new
-                                    system
-                                    <br> Testing & refining code and rewriting if it needed.
-
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>Freelance Web Application Developer<sup></sup> @ <strong><a href="#" target="_blank">Freelance
-                                Works</a></strong>
-                        <em>[July 2020 – Feb 2021]</em><br><br>
-                        <p style="margin: 0px;">
-                            <!-- House-264, Road-03, Avenue-03, Mirpur DOHS, Pallabi, Dhaka-1216, Bangladesh. -->
-                            <ul>
-                                <li>
-                                    <strong><em>Responsibility :</em></strong>
-                                    <br> Developing web application by analyzing and identification areas for
-                                    modifications
-                                    <br> Modify existing software to correct errors and fulfill the requirement
-                                    <br> Testing & refining code and rewriting if it needed.
-                                    <br> Determining user needs & information to evaluate and plan installation of a
-                                    new
-                                    system.
-
-
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>Web Application Developer<sup></sup> @ <strong><a href="https://www.devszone.com/"
-                                target="_blank">DevsZone</a></strong>
-                        <em>[Aug 2018 – July 2019]</em><br><br>
-                        <p style="margin: 0px;">
-                            House-264, Road-03, Avenue-03, Mirpur DOHS, Pallabi, Dhaka-1216, Bangladesh.
-                            <ul>
-                                <li>
-                                    <strong><em>Responsibility :</em></strong>
-                                    <br> Developing web application by analyzing and identification areas for
-                                    modifications
-                                    <br> Ensure existing software to correct errors and industry standard
-                                    <br> Determining user needs & information to evaluate and plan installation of a
-                                    new
-                                    system
-                                    <br> Testing & refining code and rewriting if it needed.
-
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>Trainee Developer @ <strong><a href="http://etl.com.bd/" target="_blank">Ezze Technology
-                                Limited</a></strong>
-                        <em>[(Intern) Oct 2017 – Dec 2017]</em><br><br>
-                        <p style="margin: 0px;">
-                            Software Technology Park, Janata Tower, Kawran Bazar, Dhaka-1215.
-                            <ul>
-                                <li>
-                                    <strong><em>Responsibility :</em></strong>                            
-                                    <br> Writing and testing code, refining and rewriting it as necessary
-                                    <br> Developing web application and identifying areas for modification
-                                    <br> Diagnosing & resolving hardware, software & end users problems
-                                    <br> Acting as the first point of contact for all IT & technical queries.
-
-
-
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-
-                </ul>
-            </div>
-
-
-            <hr />
-
-            <div class="doc-section" id="skills">
-                <h3>Skills & Abilities</h3>
-                <ul class="square">
-                    <!-- <li>Installing & maintaining computer hardware and software in variety of locations.</li>
-            <li>Troubleshooting, Technical skills, Operating System, Microsoft Office.</li>
-            <li>Wireless Technologies, Routing and Switching, WAN, LAN.</li>
-            <li>IT Processes management, IT Administration.</li>
-            <li>SQA(Software Quality Assurance), Computer Network.</li>
-            <li>Social and Professional Issues in Computing, Database Systems, UML.</li> -->
-                    <li>Language: PHP, C, JavaScript, jQuery, React.js, HTML, CSS.</li>
-                    <li>Framework: Laravel, CodeIgniter, Yii, Next.js, Bootstrap.</li>
-                    <li>Database: MySQL, SQL Server, Oracle.</li>
-                    <li>Version Control: GitHub, Bitbucket, GitLab.</li>
-                    <li>Application Programming Interface: Rest API.</li>
-                    <li>Modeling Language: UML.</li>
-                    <li>Design Pattern Use: MVC, Repository.</li>
-
-                </ul>
-            </div>
-
-
-            <hr />
-
-
-            <div class="doc-section" id="projects">
-                <h3>Projects</h3>
-
-                <ul class="square">
-
-                	<li>
-                        <u><strong>bdtax.com.bd</strong></u>
-                        <em>[Jun 2022 - Present]</em> <strong>Live link: </strong><a href="https://www.bdtax.com.bd/"
-                            target="_blank">Click here</a>
-                        <p>
-                            This is an online income tax return preparation, processing and submission software to help user greater profitability through direct user to support team communication and others for tax return preparation, processing and submission. This project deals with respect to the user benefit of getting their services at a low price best services online. Here, the main users of this software are tax payer.<br><br>
-
-
-							User will get unique interface where they can get service and get in touch with Chat or Email or phone and user get pay online for services. User can easily prepare tax, electronically file with National Board of Revenue (NBR) and pay any tax due with a mobile payment, credit card or bank transfers. It is a system guided easy-to-use tax preparation software that will save time, money and help user reduce any tax potential audits by the government.<br>
-
-                            <strong>Tools Used:</strong> React.js, Next.js, Yii Framework(old version), PHP, Laravel Framework, API, MySQL, JavaScript, jQuery, Payment gateway, Bootstrap, bkash etc.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Individual Income Tax Preparation
-                                    <br> Income Tax Services for Professionals
-                                    <br> Company Income Tax Compliance
-                                    <br> Income Tax Preparation Training  
-
-                                    <br> Payment Section
-                                    <br> All possible reports
-                                    <br> History
-                                    <br> Assets and Others
-                                    <br> Promotion & Discount
-                                    <br> User management section
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Backend developer; Developed individually and also developed as a team member.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>
-                        <u><strong>E-Commerce</strong></u>
-                        <em>[Aug 2021 - Apr 2022]</em> <strong>Live link: </strong><a href="https://radimart.com/"
-                            target="_blank">Click here</a>
-                        <p>
-                            This is a E-Commerce project to help customer, vendor and seller, ensure greater profitability through direct customer to seller, vendor to customer communication and others. This project deals with respect to the customer benefit of getting their products at a low and best price online. Here, the main users of this website are vendor, customer, seller and admin. Customer will get unique interface where they can perform marketing, get the correct rates of the market, get in touch with SMS or Email and gather knowledge of different schemes and get pay online or cash.<br>
-
-                            <strong>Tools Used:</strong> PHP, Laravel Framework, API, React, MySQL, JavaScript, jQuery, Bootstrap,  Repository Pattern etc.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Product manage, Brand manage
-                                    <br> Customer manage, Multi-Vendor mange
-                                    <br> Product cart to delivery
-                                    <br> Order manage  
-
-                                    <br> Payment section
-                                    <br> Product review or rating
-                                    <br> All possible reports
-                                    <br> History, Complain
-                                    <br> Assets, Stock Manage
-                                    <br> Promotion & discount
-                                    <br> User management section
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Backend developer; Developed individually and also developed as a team member.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                	<li>
-                        <u><strong>Human Resources Management (HRM)</strong></u>
-                        <em>[May 2021 – Jul 2021]</em> <strong>Live link: </strong><a href="#"
-                            target="_blank">Click here</a>
-                        <p>
-                            This is application base project that provide HR related service, ensure greater facility for all employee. By this system user can easily find any employee info through user permission wise by login into system. This application is a common place between employee and admin.<br>
-
-                            <strong>Tools Used:</strong> PHP, Laravel Framework, ZKTeco fingerprint attendance machine using ZKLibrary, MySQL, JavaScript, jQuery, Bootstrap etc.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Employee manage by all process.
-                                    <br> Recruitment, Leave management, Attendance.
-                                    <br> Accounts section.
-                                    <br> Overtime, All possible Reports.  
-
-                                    <br> History, Notice Board, Complain.
-                                    <br> Experience Certificate, Assets.
-                                    <br> HR data and analytics, Team manage.
-                                    <br> User management section.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed individually.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                	<li>
-                        <u><strong>Jobslinkbd</strong></u>
-                        <em>[Mar 2021 – May 2021]</em> <strong>Live link: </strong><a href="http://jobslinkbd.com/"
-                            target="_blank">Click here</a>
-                        <p>
-                            This project is a job portal ensure greater facility through direct employer to job seeker. The Job seeker can easily find and apply for job by login into system. The Employer or company can easily get expert employee from this job portal site by posting a job. The job portal website is a common place between job seeker and company.<br>
-
-                            <strong>Tools Used:</strong> PHP, Codeigniter Framework, API, HTML, CSS, Bootstrap, MySQL,
-                            JavaScript, jQuery.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> When job seeker can login in his account then he can get company lists which match with his profile or education detail.
-                                    <br> So job seeker can easily apply to this job and he can also send message to company for other inquiry.
-                                    <br> When company login in account, company or employer can get job seeker lists which match with all criteria for posted job and also see apply job seeker lists who apply on posted job.
-                                    <br> Admin can manage all service, company or employer wise and job seeker wise.  
-
-                                    <br> Company or employer and job seeker and all others get in touch with email and others contact info.
-                                    <br> Admin can manage role wise user’s permission and see service report, all history and summary report.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed individually and also developed as a
-                                    team member.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                	<li>
-                        <u><strong>Bhaiya Digital</strong></u>
-                        <em>[Feb 2021 – Mar 2021]</em> <strong>Live link: </strong><a href="http://bhaiya.com.bd/"
-                            target="_blank">Click here</a>
-                        <p>
-                            The main objective of this project is it related digital service, ensure greater facility through direct customer to customer.<br>
-
-                            <strong>Tools Used:</strong> PHP, Laravel Framework, HTML, CSS, Bootstrap, MySQL,
-                            JavaScript, jQuery, Facebook Api.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> System provides creative it service, technological it service and digital marketing & branding service.
-                                    <br>  System also provides enterprise solution & service like e-commerce, hrm, pos, payroll and education management software etc.
-                                    <br> Customer can communicate to admin to get all service by this system.
-                                    <br> Customer can payment by cash or online for getting service by this system.
-                                    <br> Admin can manage all service customers wise and business wise.
-                                    <br> Customer and all others get in touch with Email and others contact info.
-                                    <br> Admin can manage role wise user’s permission and see service report, customer history and summary report.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed individually and also developed as a
-                                    team member.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>
-                        <u><strong>ISP: Zero4 Communication</strong></u>
-                        <em>[Sep 2020]</em> <strong>Live link front-end: </strong><a href="https://alaminmia.com/zero4/"
-                            target="_blank">Click here</a><strong> Live link backend: </strong><a
-                            href="https://alaminmia.com/zero4/login" target="_blank">Click here</a>
-                        <p>
-                            The main objective of this project is to provide isp service and other IT Technology to
-                            ensure greater facility through
-                            direct customer to admin communication and etc.<br>
-
-                            <strong>Tools Used:</strong> PHP, Laravel Framework, HTML, CSS, Bootstrap, MySQL,
-                            JavaScript, jQuery.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Customer can order isp package.
-                                    <br> Can get IT technology solution & service.
-                                    <br> Customer can communicate to admin to get at a low price isp service.
-                                    <br> Customer and all others get in touch with Email and others contact info.
-                                    <br> ISP system customization.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed as a
-                                    team member and also developed individually.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>
-                        <u><strong>Mobile Repair Management</strong></u>
-                        <em> [Dec 2020] </em> <strong> Live link: </strong><a
-                            href="https://alaminmia.com/reapair-info/login" target="_blank">Click here</a>
-                        <p>
-                            The main objective of this project is to provide customer mobile repair service and other IT
-                            Solution to ensure greater facility through
-                            direct customer to admin communication and etc.<br>
-
-                            <strong>Tools Used:</strong> PHP, Laravel Framework, HTML, CSS, Bootstrap, MySQL,
-                            JavaScript, jQuery.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Customer can get mobile repair solution & service.
-                                    <br> Admin can manage all service company wise, customers wise and business wise.
-                                    <br> Customer and all others get in touch with Email and others contact info.
-                                    <br> Provide mobile model wise repair service to the customer.
-                                    <br> Admin can manage role wise user’s permission.
-                                    <br> Admin also see service report, customer history and summary report.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed
-                                    individually and also developed as a team member.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-
-                    <li>
-                        <strong><u>Car Parking App</u></strong>
-                        <em>[Apr 2019 – May 2019]</em> <strong>Live link front-end: </strong><a
-                            href="https://alaminmia.com/car_parking_apps/car_parking_apps_view/index.html"
-                            target="_blank">Click here</a><strong> Live link backend: </strong><a
-                            href="https://alaminmia.com/car_parking_apps/admin" target="_blank">Click here</a>
-                        <p>
-                            The main objective of this project is to help user ensure greater profitability through
-                            direct customer to customer communication and maintain parking and payment for parking. This
-                            system is app base parking system.<br>
-                            <strong>Tools Used:</strong> HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery, PHP and
-                            Codeigniter Framework, API, Google map API.
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-
-
-                                    <br> Customer car parking maintain by app.
-                                    <br> Find nearest and empty parking space by app.
-                                    <br> Add parking space.
-                                    <br> Payment for parking.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed as a
-                                    team member.
-
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-
-                    <li>
-                        <strong><u>Inventory Management System</u></strong>
-                        <em>[Oct 2017 – Dec 2017]</em> <strong>Live link: </strong><a
-                            href="https://alaminmia.com/inventory_management/admin" target="_blank">Click here</a>
-                        <p>
-                            The main objective of this project is to help admin or user ensure greater profitability
-                            through direct customer to customer, the supplier to supplier communication and maintain
-                            product stock, purchase, invoice and payment report etc.<br>
-
-                            <strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, MySQL,
-                            JavaScript and jQuery.
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-
-                                    <br> Maintain product stock, purchase, invoice and payment report
-                                    <br> Products sales at the best price by deals with customer and supplier
-                                    <br> Market wise, commodity wise report to the customers & suppliers in an
-                                    interactive
-                                    way
-                                    <br> Deals with income and expense report
-                                    <br> Daily, monthly, yearly sales report & profit report
-                                    <br> Manages bank which bank are related with product payment.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed
-                                    individually.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-
-                    <li>
-                        <strong><u>Bidyaan Education Management System</u></strong>
-                        <em>[Nov 2018 – Jul 2019]</em> <strong>Live link front-end: </strong><a
-                            href="https://alaminmia.com/bidyaan_new/" target="_blank">Click here</a><strong> Live link
-                            backend: </strong><a href="https://alaminmia.com/bidyaan_new/hidden/log"
-                            target="_blank">Click here</a>
-                        <p>
-                            The main objective of this project is to help school/college ensure greater facility through
-                            direct teacher to student & parent communication and etc.<br>
-
-                            <strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, MySQL,
-                            JavaScript, jQuery.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> College/School manages by necessary step
-                                    <br> Subject manage, input subject marks
-                                    <br> Admin control, Student & Teacher manage
-                                    <br> Biometric fingerprint machine integration for student attendance
-                                    <br> Online mark sheet, certificate & admit card
-                                    <br> Manually student attendance
-                                    <br> Auto genarate student roll number.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed as a
-                                    team member and also developed individually.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-
-
-                    <li>
-                        <strong><u>E-Farming</u>: <u>E-Commerce for Agricultural Product</u></strong>
-                        <em>[Jan 2017 – Aug 2017]</em> <strong>Live link front-end: </strong><a
-                            href="https://alaminmia.com/farming_assist/" target="_blank">Click here</a><strong> Live link
-                            backend: </strong><a href="https://alaminmia.com/farming_assist/admin" target="_blank">Click
-                            here</a>
-                        <p>
-                            Bangladesh is agricultural country. Majority of Bangladesh people live on agricultural. So,
-                            Agricultural institutes, research bases agencies and other resources related to agriculture
-                            in bangladesh is vitally important.The main objective of this project is to help farmers
-                            ensure greater profitability through direct farmer to farmer, farmer to customer & farmer to
-                            dealer communication etc.<br>
-
-                            <strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, MySQL,
-                            JavaScript, jQuery, Stripe payment gateway and SMS API.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Direct farmer to farmer, farmer to customer & farmer to dealer communication
-                                    <br> Farmers benefit of getting their products sale at a best price online
-                                    <br> Can perform marketing, get the correct rates of the market product
-                                    <br> Farmer,customer and all others get in touch with SMS or Email
-                                    <br> All people are pay online or cash.
-                                    <br> Provide market wise, commodity wise report to the farmer in interactive way
-                                    <br> Market committee will control all business activities.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed
-                                    individually.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>
-                        <strong><u>Enterprise Resource Planning(ERP)</u></strong>
-                        <em>[May 2019]</em> <strong>Live link: </strong><a href="https://alaminmia.com/erp/"
-                            target="_blank">Click here</a>
-                        <p>
-                            This project is to help customer ensure greater profitability through direct customer to
-                            customer, customer to client & Admin to all communication etc.<br>
-
-                            <strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, MySQL,
-                            JavaScript, jQuery.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Employee manage by all process
-                                    <br> Recruitment,leave management,attendance
-                                    <br> Payroll, accounts section
-                                    <br> Manufacturing, all posible reports.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed as a
-                                    team member.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>
-                        <strong><u>ISP Pcnet Server System</u></strong>
-                        <em>[Dec 2018]</em> <strong>Live link: </strong><a href="https://alaminmia.com/pcnet/"
-                            target="_blank">Click here</a>
-                        <p>
-                            The main objective of this project is to help isp provider ensure greater facility and best
-                            service. This project is manage ISP Server System.<br>
-
-                            <strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, MySQL,
-                            JavaScript, jQuery.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Manage ISP server system
-                                    <br> Help isp provider ensure greater facility
-                                    <br> ISP server system customization.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Backend developer; Developed as a team
-                                    member.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-
-                    <li>
-                        <strong><u>Sports Betting Business Plan</u></strong>
-                        <em>[Aug 2018 – Sep 2018]</em>
-                        <p>
-                            The main objective of this project is multi-level marketing and user & customer ensure
-                            greater profitability.<br>
-
-                            <strong>Tools Used:</strong> HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery, PHP.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Sports betting business plan
-                                    <br> Multi-level marketing
-                                    <br> Customer commission.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed
-                                    individually.
-
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-
-                    <li>
-                        <strong><u>Cashier Management System</u></strong>
-                        <em>[Jul 2018 – Jan 2019]</em>
-                        <p>
-                            This system provides to manage money. The user can manage the bank deposit money and also
-                            withdraw money.<br>
-
-                            <strong>Tools Used:</strong> HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery, PHP and
-                            Codeigniter Framework.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Manage the bank deposit money and also withdraw
-                                    <br> Expense money also calculates
-                                    <br> Can be daily, monthly, yearly reports.
-                                    <br> Provides all currency wise money mange.
-
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed
-                                    individually.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>
-                        <strong><u>Bangladesh Homoeopathic Board</u></strong>
-                        <em>[Mar 2018 – May 2018]</em> <strong>Live link: </strong><a
-                            href="https://alaminmia.com/bd_homoeopathic_board/" target="_blank">Click here</a>
-                        <p>
-                            The main objective of this project is to help college ensure greater facility through direct
-                            teacher to student & parent communication.<br>
-
-                            <strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, JavaScript,
-                            jQuery and MySQL.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> College manages by necessary step
-                                    <br> Yearly subject manage, input subject marks
-                                    <br> Admin control, create category of college,Subject payment manages
-                                    <br> Student & Teacher manage, distribute exam paper
-                                    <br> Create college & Teacher profile, online mark sheet & admit card
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end & Backend developer; Developed as a
-                                    team member.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-                    <li>
-                        <strong><u>Real Estate Company Website</u></strong>
-                        <em>[Apr 2016 – May 2016]</em> <strong>Live link: </strong><a
-                            href="https://alaminmia.com/real_estate_company/" target="_blank">Click here</a>
-                        <p>
-                            This system provides to manage user to ensure greater profitability through user to user,
-                            user to seller & user to buyer communication.<br>
-
-                            <strong>Tools Used:</strong> HTML, CSS, JavaScript, Bootstrap and Bootstrap slider.
-
-                            <ul>
-                                <li>
-                                    <strong><em>Features:</em></strong>
-                                    <br> Main users of this website are buyer & seller
-                                    <br> Getting their products at a best price online
-                                    <br> user to user, user to seller & user to buyer communication.
-                                    <br><br>
-
-                                    <strong><em>Role Played:</em></strong> Front-end developer; Developed individually.
-                                </li>
-                            </ul>
-                        </p>
-                    </li>
-
-                </ul>
-            </div>
-
-            <hr />
-
-
-            <div class="doc-section" id="extra_curriculum">
-                <h3>Extra Curriculum Activities</h3>
-                <ul class="square">
-
-                    <li>Volunteer in Digital World-2017 as an IT Supporter of registration.</li>
-                    <li>Active member of EWU Computer Programming Club(EWUCoPC).</li>
-                    <li>Co-Founder of EWU Void.</li>
-                    <li>Participate in Soft Skills program from Top-Up-IT Training at EWU.</li>
-
-                </ul>
-            </div>
-
-            <hr>
-            <div class="doc-section" id="trained_programs">
-                <h3>Trained Programs</h3>
-                <ul class="square">
-
-
-                    <li>Web Design at <strong><a href="https://www.bitm.org.bd/"
-                                target="_blank">BITM-BASIS</a></strong>.</li>
-                    <li>Web Development at <strong><a href="https://talhatraining.com/" target="_blank">Talha
-                                Training</a></strong>.</li>
-                    <li>Bdjobs-AMCAT Employability Certificates for Web Developer at <strong><a
-                                href="https://www.bdjobs.com/" target="_blank">Bdjobs</a></strong>.</li>
-                    <li>CCNA at <strong><a href="http://www.atcomputer.net.bd/" target="_blank">AT Computer Solution
-                                Limited</a></strong>.</li>
-
-
-                </ul>
-            </div>
-
-            <hr>
-            <div class="doc-section" id="education">
-                <h3>Education</h3>
-                <ul class="square">
-
-                    <li><strong>Bachelor in Computer Science and Engineering</strong><br />East West University, Dhaka,
-                        Bangladesh.<br />
-                        Passing Year: <em>2017</em></li>
-
-                </ul>
-                <ul class="square">
-
-                    <li><strong>Higher Secondary School Certificate</strong><br />Science<br />Dhaka City College,
-                        Dhaka, Bangladesh.<br />
-                        Passing Year: <em>2010</em></li>
-
-                </ul>
-            </div>
-
-            <hr>
-
-            <div class="doc-section" id="interest_works">
-                <h3>Interest To Works</h3>
-                <ul class="square">
-                    <li>Software Engineering, Web Application Development.</li>
-                    <li>IT Executive, Computer Networking, IT Manager, IT Support.</li>
-                    <li>SQA(Software Quality Assurance), Database Programing.</li>
-
-
-                </ul>
-            </div>
-
-            <hr>
-            <div class="doc-section" id="contact">
-                <h3>Contact</h3>
-                <p>To contact me, please drop a line at : <strong><a href="mailto:monirahmedtanveen@gmail.com"
-                            target="_top">alaminmia.jobs@gmail.com
-                        </a></strong></p>
-            </div>
-
-            <hr>
-
-        </div>
-
-
-
-    </div><!-- Content -->
-
-    <footer class="eleven center-column">
-        <hr class="large" />
-        <p>The Webpage is built on <a href="http://www.getskeleton.com/" target="_blank">Skeleton</a> by Alamin Mia.</p>
-        <!-- <p> Website idea from <a href="https://lilianweng.github.io" target="_blank">Lilian Weng</a></p> -->
-    </footer>
-
-    </div><!-- container -->
-
-    <!-- End Document
-================================================== -->
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Who am I -->
+            <section id="whoami">
+                <h2 class="section-title">Who am I?</h2>
+                <div class="intro-card">
+                    <p class="highlight">(*) Here is my tech blog, <strong><a href="#">check it out</a></strong> if you are interested.</p>
+                    <p>Hi I'm Alamin Mia! Working in <a href="https://www.bdtax.com.bd/" target="_blank">BD Tax Technology Ltd</a> as a Software Engineer. Previously working in <a href="https://radissonbd.com/" target="_blank">Radisson Digital Technologies Limited</a> as a Web Developer. Before that I was working as a freelance Web Application Developer. I was also working in <a href="https://www.devszone.com/" target="_blank">DevsZone</a> as a Web Application Developer. Before that I Intern for <a href="http://etl.com.bd/" target="_blank">Ezze Technology Limited</a> as a Trainee Developer.</p>
+                    <p>I graduated from <a href="http://www.ewubd.edu/" target="_blank">East West University (EWU)</a>, Dhaka, Bangladesh.</p>
+                </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section id="work">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Software Engineer</div>
+                                <div class="job-company">@ <a href="https://www.bdtax.com.bd/" target="_blank">BD Tax Technology Ltd</a></div>
+                            </div>
+                            <span class="job-date">Jun 2022 – Present</span>
+                        </div>
+                        <div class="job-location">DK Tower, 94 Bir uttom C.R. Datta Road, Banglamotor, Dhaka-1205, Bangladesh</div>
+                        <ul class="responsibilities">
+                            <li>Developing software & application by analyzing and identification areas for modifications</li>
+                            <li>Ensure existing software to correct errors and industry standard</li>
+                            <li>Determining user needs & information to evaluate and plan installation of a new system</li>
+                            <li>Testing & refining code and rewriting if it needed.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Web Developer</div>
+                                <div class="job-company">@ <a href="https://radissonbd.com/" target="_blank">Radisson Digital Technologies Limited</a></div>
+                            </div>
+                            <span class="job-date">Feb 2021 – May 2022</span>
+                        </div>
+                        <div class="job-location">Shah Ali Tower(6th Floor), 33 Kawran Bazar, Dhaka-1215, Bangladesh.</div>
+                        <ul class="responsibilities">
+                            <li>Developing web system & application by analyzing and identification areas for modifications</li>
+                            <li>Ensure existing software to correct errors and industry standard</li>
+                            <li>Testing & refining code and rewriting if it needed.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Freelance Web Application Developer</div>
+                                <div class="job-company">@ Freelance Works</div>
+                            </div>
+                            <span class="job-date">July 2020 – Feb 2021</span>
+                        </div>
+                        <ul class="responsibilities">
+                            <li>Developing web application by analyzing and identification areas for modifications</li>
+                            <li>Modify existing software to correct errors and fulfill the requirement</li>
+                            <li>Testing & refining code and rewriting if it needed.</li>
+                            <li>Determining user needs & information to evaluate and plan installation of a new system.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Web Application Developer</div>
+                                <div class="job-company">@ <a href="https://www.devszone.com/" target="_blank">DevsZone</a></div>
+                            </div>
+                            <span class="job-date">Aug 2018 – July 2019</span>
+                        </div>
+                        <div class="job-location">House-264, Road-03, Avenue-03, Mirpur DOHS, Pallabi, Dhaka-1216, Bangladesh.</div>
+                        <ul class="responsibilities">
+                            <li>Developing web application by analyzing and identification areas for modifications</li>
+                            <li>Ensure existing software to correct errors and industry standard</li>
+                            <li>Determining user needs & information to evaluate and plan installation of a new system</li>
+                            <li>Testing & refining code and rewriting if it needed.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Trainee Developer</div>
+                                <div class="job-company">@ <a href="http://etl.com.bd/" target="_blank">Ezze Technology Limited</a></div>
+                            </div>
+                            <span class="job-date">(Intern) Oct 2017 – Dec 2017</span>
+                        </div>
+                        <div class="job-location">Software Technology Park, Janata Tower, Kawran Bazar, Dhaka-1215.</div>
+                        <ul class="responsibilities">
+                            <li>Writing and testing code, refining and rewriting it as necessary</li>
+                            <li>Developing web application and identifying areas for modification</li>
+                            <li>Diagnosing & resolving hardware, software & end users problems</li>
+                            <li>Acting as the first point of contact for all IT & technical queries.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section id="skills">
+                <h2 class="section-title">Skills & Abilities</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4><i class="fas fa-laptop-code"></i> Language</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">jQuery</span>
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h4><i class="fas fa-layer-group"></i> Framework</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Laravel</span>
+                            <span class="skill-tag">CodeIgniter</span>
+                            <span class="skill-tag">Yii</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">Bootstrap</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h4><i class="fas fa-database"></i> Database</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">SQL Server</span>
+                            <span class="skill-tag">Oracle</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h4><i class="fas fa-code-branch"></i> Version Control</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Bitbucket</span>
+                            <span class="skill-tag">GitLab</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h4><i class="fas fa-plug"></i> API</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Rest API</span>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h4><i class="fas fa-project-diagram"></i> Modeling & Patterns</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">UML</span>
+                            <span class="skill-tag">MVC</span>
+                            <span class="skill-tag">Repository</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects (same content as before) -->
+            <section id="projects">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">bdtax.com.bd</h3>
+                            <span class="project-date">Jun 2022 - Present</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.bdtax.com.bd/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">This is an online income tax return preparation, processing and submission software to help user greater profitability through direct user to support team communication and others for tax return preparation, processing and submission. This project deals with respect to the user benefit of getting their services at a low price best services online. Here, the main users of this software are tax payer.<br><br>
+                        User will get unique interface where they can get service and get in touch with Chat or Email or phone and user get pay online for services. User can easily prepare tax, electronically file with National Board of Revenue (NBR) and pay any tax due with a mobile payment, credit card or bank transfers. It is a system guided easy-to-use tax preparation software that will save time, money and help user reduce any tax potential audits by the government.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> React.js, Next.js, Yii Framework(old version), PHP, Laravel Framework, API, MySQL, JavaScript, jQuery, Payment gateway, Bootstrap, bkash etc.</div>
+                        <ul class="features-list">
+                            <li>Individual Income Tax Preparation</li>
+                            <li>Income Tax Services for Professionals</li>
+                            <li>Company Income Tax Compliance</li>
+                            <li>Income Tax Preparation Training</li>
+                            <li>Payment Section</li>
+                            <li>All possible reports</li>
+                            <li>History</li>
+                            <li>Assets and Others</li>
+                            <li>Promotion & Discount</li>
+                            <li>User management section</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Backend developer; Developed individually and also developed as a team member.</p>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">E-Commerce</h3>
+                            <span class="project-date">Aug 2021 - Apr 2022</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://radimart.com/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">This is a E-Commerce project to help customer, vendor and seller, ensure greater profitability through direct customer to seller, vendor to customer communication and others. This project deals with respect to the customer benefit of getting their products at a low and best price online. Here, the main users of this website are vendor, customer, seller and admin. Customer will get unique interface where they can perform marketing, get the correct rates of the market, get in touch with SMS or Email and gather knowledge of different schemes and get pay online or cash.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Laravel Framework, API, React, MySQL, JavaScript, jQuery, Bootstrap, Repository Pattern etc.</div>
+                        <ul class="features-list">
+                            <li>Product manage, Brand manage</li>
+                            <li>Customer manage, Multi-Vendor mange</li>
+                            <li>Product cart to delivery</li>
+                            <li>Order manage</li>
+                            <li>Payment section</li>
+                            <li>Product review or rating</li>
+                            <li>All possible reports</li>
+                            <li>History, Complain</li>
+                            <li>Assets, Stock Manage</li>
+                            <li>Promotion & discount</li>
+                            <li>User management section</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Backend developer; Developed individually and also developed as a team member.</p>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Human Resources Management (HRM)</h3>
+                            <span class="project-date">May 2021 – Jul 2021</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">This is application base project that provide HR related service, ensure greater facility for all employee. By this system user can easily find any employee info through user permission wise by login into system. This application is a common place between employee and admin.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Laravel Framework, ZKTeco fingerprint attendance machine using ZKLibrary, MySQL, JavaScript, jQuery, Bootstrap etc.</div>
+                        <ul class="features-list">
+                            <li>Employee manage by all process.</li>
+                            <li>Recruitment, Leave management, Attendance.</li>
+                            <li>Accounts section.</li>
+                            <li>Overtime, All possible Reports.</li>
+                            <li>History, Notice Board, Complain.</li>
+                            <li>Experience Certificate, Assets.</li>
+                            <li>HR data and analytics, Team manage.</li>
+                            <li>User management section.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed individually.</p>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Jobslinkbd</h3>
+                            <span class="project-date">Mar 2021 – May 2021</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="http://jobslinkbd.com/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">This project is a job portal ensure greater facility through direct employer to job seeker. The Job seeker can easily find and apply for job by login into system. The Employer or company can easily get expert employee from this job portal site by posting a job. The job portal website is a common place between job seeker and company.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Codeigniter Framework, API, HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery.</div>
+                        <ul class="features-list">
+                            <li>When job seeker can login in his account then he can get company lists which match with his profile or education detail.</li>
+                            <li>So job seeker can easily apply to this job and he can also send message to company for other inquiry.</li>
+                            <li>When company login in account, company or employer can get job seeker lists which match with all criteria for posted job and also see apply job seeker lists who apply on posted job.</li>
+                            <li>Admin can manage all service, company or employer wise and job seeker wise.</li>
+                            <li>Company or employer and job seeker and all others get in touch with email and others contact info.</li>
+                            <li>Admin can manage role wise user’s permission and see service report, all history and summary report.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed individually and also developed as a team member.</p>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Bhaiya Digital</h3>
+                            <span class="project-date">Feb 2021 – Mar 2021</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="http://bhaiya.com.bd/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">The main objective of this project is it related digital service, ensure greater facility through direct customer to customer.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Laravel Framework, HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery, Facebook Api.</div>
+                        <ul class="features-list">
+                            <li>System provides creative it service, technological it service and digital marketing & branding service.</li>
+                            <li>System also provides enterprise solution & service like e-commerce, hrm, pos, payroll and education management software etc.</li>
+                            <li>Customer can communicate to admin to get all service by this system.</li>
+                            <li>Customer can payment by cash or online for getting service by this system.</li>
+                            <li>Admin can manage all service customers wise and business wise.</li>
+                            <li>Customer and all others get in touch with Email and others contact info.</li>
+                            <li>Admin can manage role wise user’s permission and see service report, customer history and summary report.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed individually and also developed as a team member.</p>
+                    </div>
+
+                    <!-- Project 6 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">ISP: Zero4 Communication</h3>
+                            <span class="project-date">Sep 2020</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alaminmia.com/zero4/" target="_blank"><i class="fas fa-external-link-alt"></i> Front-end</a>
+                            <a href="https://alaminmia.com/zero4/login" target="_blank"><i class="fas fa-external-link-alt"></i> Backend</a>
+                        </div>
+                        <p class="project-desc">The main objective of this project is to provide isp service and other IT Technology to ensure greater facility through direct customer to admin communication and etc.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Laravel Framework, HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery.</div>
+                        <ul class="features-list">
+                            <li>Customer can order isp package.</li>
+                            <li>Can get IT technology solution & service.</li>
+                            <li>Customer can communicate to admin to get at a low price isp service.</li>
+                            <li>Customer and all others get in touch with Email and others contact info.</li>
+                            <li>ISP system customization.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed as a team member and also developed individually.</p>
+                    </div>
+
+                    <!-- Project 7 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Mobile Repair Management</h3>
+                            <span class="project-date">Dec 2020</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alaminmia.com/reapair-info/login" target="_blank"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">The main objective of this project is to provide customer mobile repair service and other IT Solution to ensure greater facility through direct customer to admin communication and etc.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Laravel Framework, HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery.</div>
+                        <ul class="features-list">
+                            <li>Customer can get mobile repair solution & service.</li>
+                            <li>Admin can manage all service company wise, customers wise and business wise.</li>
+                            <li>Customer and all others get in touch with Email and others contact info.</li>
+                            <li>Provide mobile model wise repair service to the customer.</li>
+                            <li>Admin can manage role wise user’s permission.</li>
+                            <li>Admin also see service report, customer history and summary report.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed individually and also developed as a team member.</p>
+                    </div>
+
+                    <!-- Project 8 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Car Parking App</h3>
+                            <span class="project-date">Apr 2019 – May 2019</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alaminmia.com/car_parking_apps/car_parking_apps_view/index.html" target="_blank"><i class="fas fa-external-link-alt"></i> Front-end</a>
+                            <a href="https://alaminmia.com/car_parking_apps/admin" target="_blank"><i class="fas fa-external-link-alt"></i> Backend</a>
+                        </div>
+                        <p class="project-desc">The main objective of this project is to help user ensure greater profitability through direct customer to customer communication and maintain parking and payment for parking. This system is app base parking system.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery, PHP and Codeigniter Framework, API, Google map API.</div>
+                        <ul class="features-list">
+                            <li>Customer car parking maintain by app.</li>
+                            <li>Find nearest and empty parking space by app.</li>
+                            <li>Add parking space.</li>
+                            <li>Payment for parking.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed as a team member.</p>
+                    </div>
+
+                    <!-- Project 9 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Inventory Management System</h3>
+                            <span class="project-date">Oct 2017 – Dec 2017</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alaminmia.com/inventory_management/admin" target="_blank"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">The main objective of this project is to help admin or user ensure greater profitability through direct customer to customer, the supplier to supplier communication and maintain product stock, purchase, invoice and payment report etc.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, MySQL, JavaScript and jQuery.</div>
+                        <ul class="features-list">
+                            <li>Maintain product stock, purchase, invoice and payment report</li>
+                            <li>Products sales at the best price by deals with customer and supplier</li>
+                            <li>Market wise, commodity wise report to the customers & suppliers in an interactive way</li>
+                            <li>Deals with income and expense report</li>
+                            <li>Daily, monthly, yearly sales report & profit report</li>
+                            <li>Manages bank which bank are related with product payment.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed individually.</p>
+                    </div>
+
+                    <!-- Project 10 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Bidyaan Education Management System</h3>
+                            <span class="project-date">Nov 2018 – Jul 2019</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alaminmia.com/bidyaan_new/" target="_blank"><i class="fas fa-external-link-alt"></i> Front-end</a>
+                            <a href="https://alaminmia.com/bidyaan_new/hidden/log" target="_blank"><i class="fas fa-external-link-alt"></i> Backend</a>
+                        </div>
+                        <p class="project-desc">The main objective of this project is to help school/college ensure greater facility through direct teacher to student & parent communication and etc.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery.</div>
+                        <ul class="features-list">
+                            <li>College/School manages by necessary step</li>
+                            <li>Subject manage, input subject marks</li>
+                            <li>Admin control, Student & Teacher manage</li>
+                            <li>Biometric fingerprint machine integration for student attendance</li>
+                            <li>Online mark sheet, certificate & admit card</li>
+                            <li>Manually student attendance</li>
+                            <li>Auto genarate student roll number.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed as a team member and also developed individually.</p>
+                    </div>
+
+                    <!-- Project 11 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">E-Farming: E-Commerce for Agricultural Product</h3>
+                            <span class="project-date">Jan 2017 – Aug 2017</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alaminmia.com/farming_assist/" target="_blank"><i class="fas fa-external-link-alt"></i> Front-end</a>
+                            <a href="https://alaminmia.com/farming_assist/admin" target="_blank"><i class="fas fa-external-link-alt"></i> Backend</a>
+                        </div>
+                        <p class="project-desc">Bangladesh is agricultural country. Majority of Bangladesh people live on agricultural. So, Agricultural institutes, research bases agencies and other resources related to agriculture in bangladesh is vitally important.The main objective of this project is to help farmers ensure greater profitability through direct farmer to farmer, farmer to customer & farmer to dealer communication etc.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery, Stripe payment gateway and SMS API.</div>
+                        <ul class="features-list">
+                            <li>Direct farmer to farmer, farmer to customer & farmer to dealer communication</li>
+                            <li>Farmers benefit of getting their products sale at a best price online</li>
+                            <li>Can perform marketing, get the correct rates of the market product</li>
+                            <li>Farmer,customer and all others get in touch with SMS or Email</li>
+                            <li>All people are pay online or cash.</li>
+                            <li>Provide market wise, commodity wise report to the farmer in interactive way</li>
+                            <li>Market committee will control all business activities.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed individually.</p>
+                    </div>
+
+                    <!-- Project 12 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Enterprise Resource Planning (ERP)</h3>
+                            <span class="project-date">May 2019</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alaminmia.com/erp/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">This project is to help customer ensure greater profitability through direct customer to customer, customer to client & Admin to all communication etc.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery.</div>
+                        <ul class="features-list">
+                            <li>Employee manage by all process</li>
+                            <li>Recruitment,leave management,attendance</li>
+                            <li>Payroll, accounts section</li>
+                            <li>Manufacturing, all posible reports.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed as a team member.</p>
+                    </div>
+
+                    <!-- Project 13 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">ISP Pcnet Server System</h3>
+                            <span class="project-date">Dec 2018</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alaminmia.com/pcnet/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">The main objective of this project is to help isp provider ensure greater facility and best service. This project is manage ISP Server System.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery.</div>
+                        <ul class="features-list">
+                            <li>Manage ISP server system</li>
+                            <li>Help isp provider ensure greater facility</li>
+                            <li>ISP server system customization.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Backend developer; Developed as a team member.</p>
+                    </div>
+
+                    <!-- Project 14 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Sports Betting Business Plan</h3>
+                            <span class="project-date">Aug 2018 – Sep 2018</span>
+                        </div>
+                        <p class="project-desc">The main objective of this project is multi-level marketing and user & customer ensure greater profitability.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery, PHP.</div>
+                        <ul class="features-list">
+                            <li>Sports betting business plan</li>
+                            <li>Multi-level marketing</li>
+                            <li>Customer commission.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed individually.</p>
+                    </div>
+
+                    <!-- Project 15 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Cashier Management System</h3>
+                            <span class="project-date">Jul 2018 – Jan 2019</span>
+                        </div>
+                        <p class="project-desc">This system provides to manage money. The user can manage the bank deposit money and also withdraw money.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> HTML, CSS, Bootstrap, MySQL, JavaScript, jQuery, PHP and Codeigniter Framework.</div>
+                        <ul class="features-list">
+                            <li>Manage the bank deposit money and also withdraw</li>
+                            <li>Expense money also calculates</li>
+                            <li>Can be daily, monthly, yearly reports.</li>
+                            <li>Provides all currency wise money mange.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed individually.</p>
+                    </div>
+
+                    <!-- Project 16 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Bangladesh Homoeopathic Board</h3>
+                            <span class="project-date">Mar 2018 – May 2018</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alaminmia.com/bd_homoeopathic_board/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">The main objective of this project is to help college ensure greater facility through direct teacher to student & parent communication.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> PHP, Codeigniter Framework, HTML, CSS, Bootstrap, JavaScript, jQuery and MySQL.</div>
+                        <ul class="features-list">
+                            <li>College manages by necessary step</li>
+                            <li>Yearly subject manage, input subject marks</li>
+                            <li>Admin control, create category of college,Subject payment manages</li>
+                            <li>Student & Teacher manage, distribute exam paper</li>
+                            <li>Create college & Teacher profile, online mark sheet & admit card</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end & Backend developer; Developed as a team member.</p>
+                    </div>
+
+                    <!-- Project 17 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Real Estate Company Website</h3>
+                            <span class="project-date">Apr 2016 – May 2016</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://alaminmia.com/real_estate_company/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Link</a>
+                        </div>
+                        <p class="project-desc">This system provides to manage user to ensure greater profitability through user to user, user to seller & user to buyer communication.</p>
+                        <div class="tools-used"><strong>Tools Used:</strong> HTML, CSS, JavaScript, Bootstrap and Bootstrap slider.</div>
+                        <ul class="features-list">
+                            <li>Main users of this website are buyer & seller</li>
+                            <li>Getting their products at a best price online</li>
+                            <li>user to user, user to seller & user to buyer communication.</li>
+                        </ul>
+                        <p class="role"><strong>Role Played:</strong> Front-end developer; Developed individually.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extra Curriculum -->
+            <section id="extra_curriculum">
+                <h2 class="section-title">Extra Curriculum Activities</h2>
+                <div class="info-card">
+                    <ul class="info-list">
+                        <li>Volunteer in Digital World-2017 as an IT Supporter of registration.</li>
+                        <li>Active member of EWU Computer Programming Club(EWUCoPC).</li>
+                        <li>Co-Founder of EWU Void.</li>
+                        <li>Participate in Soft Skills program from Top-Up-IT Training at EWU.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Trained Programs -->
+            <section id="trained_programs">
+                <h2 class="section-title">Trained Programs</h2>
+                <div class="info-card">
+                    <ul class="info-list">
+                        <li>Web Design at <strong><a href="https://www.bitm.org.bd/" target="_blank">BITM-BASIS</a></strong>.</li>
+                        <li>Web Development at <strong><a href="https://talhatraining.com/" target="_blank">Talha Training</a></strong>.</li>
+                        <li>Bdjobs-AMCAT Employability Certificates for Web Developer at <strong><a href="https://www.bdjobs.com/" target="_blank">Bdjobs</a></strong>.</li>
+                        <li>CCNA at <strong><a href="http://www.atcomputer.net.bd/" target="_blank">AT Computer Solution Limited</a></strong>.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section id="education">
+                <h2 class="section-title">Education</h2>
+                <div class="info-card">
+                    <div class="edu-item">
+                        <strong>Bachelor in Computer Science and Engineering</strong><br>
+                        East West University, Dhaka, Bangladesh.<br>
+                        Passing Year: <em>2017</em>
+                    </div>
+                    <div class="edu-item">
+                        <strong>Higher Secondary School Certificate</strong><br>
+                        Science<br>
+                        Dhaka City College, Dhaka, Bangladesh.<br>
+                        Passing Year: <em>2010</em>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interest -->
+            <section id="interest_works">
+                <h2 class="section-title">Interest To Works</h2>
+                <div class="info-card">
+                    <ul class="info-list">
+                        <li>Software Engineering, Web Application Development.</li>
+                        <li>IT Executive, Computer Networking, IT Manager, IT Support.</li>
+                        <li>SQA(Software Quality Assurance), Database Programing.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Contact - Light Version -->
+            <section id="contact">
+                <div class="contact-card">
+                    <h2>Contact</h2>
+                    <p>To contact me, please drop a line at:</p>
+                    <a href="mailto:alaminmia.jobs@gmail.com" class="contact-email">
+                        <i class="fas fa-envelope"></i>
+                        alaminmia.jobs@gmail.com
+                    </a>
+                </div>
+            </section>
+
+            <footer>
+                <p>The Webpage is built by Alamin Mia.</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close sidebar when clicking a nav link on mobile
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    sidebar.classList.remove('active');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                }
+            });
+        });
+
+        // Active nav highlighting on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
